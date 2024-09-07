@@ -13,6 +13,8 @@ from pathlib import Path
 #We Added This For Your .env Files To Stay Secure
 import os
 from dotenv import load_dotenv
+import django_heroku
+import dj_database_url
 
 load_dotenv()
 #We Added This For Your .env Files To Stay Secure
@@ -32,6 +34,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 DEBUG = os.environ.get('DEBUG')
 #We Added This For Your .env Files To Stay Secure
 ADMIN_URL = os.environ.get('ADMIN')
+#We Added This For Your .env Files To Stay Secure
 
 ALLOWED_HOSTS = []
 
@@ -131,3 +134,9 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+#WE ADDED THIS
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static')),
+
+django_heroku.settings(locals())
